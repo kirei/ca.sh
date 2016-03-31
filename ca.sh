@@ -134,12 +134,16 @@ ca_issue_certificate() {
 	cp $OPENSSL_CONF $OPENSSL_CONF_TMP
 
 	cat <<CONFIG >>$OPENSSL_CONF_TMP
-
 [ ext ]
 subjectKeyIdentifier=	hash
 authorityKeyIdentifier=	keyid:always,issuer:always
+CONFIG
+
+	if [ -n "$CA_CRL_DP" ]; then
+	cat <<CONFIG >>$OPENSSL_CONF_TMP
 crlDistributionPoints=	$CA_CRL_DP
 CONFIG
+	fi
 
 	case $TYPE in
 	generic)
