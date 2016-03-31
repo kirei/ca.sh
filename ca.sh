@@ -202,9 +202,12 @@ CONFIG
 
 	rm $OPENSSL_CONF_TMP
 	
-	if [ -s $OUTPUT_CRT ]; then
-		git add $CA_PREFIX-issued/*.pem $CA_PREFIX.db $CA_PREFIX.serial
-		echo "Do not forget to commit changes using 'git commit' and 'git push'"
+	if [ -s $OUTPUT_CRT  ]; then
+		echo "SUCCESS: Certificate issued"
+		if [ -n "$CA_GIT_REMINDER" ]; then
+			git add $CA_PREFIX-issued/*.pem $CA_PREFIX.db $CA_PREFIX.serial
+			echo "Do not forget to commit changes using 'git commit' and 'git push'"
+		fi
 	else
 		echo "ERROR: Failed to issue certificate"
 		exit 1
