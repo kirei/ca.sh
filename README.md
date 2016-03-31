@@ -27,8 +27,8 @@ authority using OpenSSL.
 
 ## Generate Test CSR
 
-   openssl genrsa 2048 > test.key
-   openssl req -new -sha256 -key test.key -out test.csr
+    openssl genrsa 2048 > test.key
+    openssl req -new -sha256 -key test.key -out test.csr
 
 ## Sign CSR
 
