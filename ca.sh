@@ -61,7 +61,7 @@ ca_bootstrap() {
 		echo "Generating CA certificate ..."
 		$OPENSSL_BIN req -config $OPENSSL_CONF \
 			-new -x509 -sha256 -utf8 \
-			-set_serial 0 -days $CA_DAYS \
+			-set_serial 1 -days $CA_DAYS \
 			$OPENSSL_ENGINE \
 			-key $CA_KEY \
 			-out $CA_CERT
